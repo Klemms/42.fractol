@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   drawline.h                                         :+:      :+:    :+:   */
+/*   image.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cababou <cababou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/09 22:40:28 by cababou           #+#    #+#             */
-/*   Updated: 2018/09/01 06:26:01 by cababou          ###   ########.fr       */
+/*   Created: 2018/09/28 06:12:44 by cababou           #+#    #+#             */
+/*   Updated: 2018/09/28 06:21:59 by cababou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DRAWLINE_H
-# define DRAWLINE_H
+#include "fractol.h"
 
-# include "../fdf.h"
+void	make_screen(t_window *w)
+{
+	if ((w->img_screen = mlx_new_image(w->mlx, w->width, w->height)) == NULL)
+		handle_error(ERR_MEMORY, 1);
+	w->img_pixels = (int *)mlx_get_data_addr(w->img_screen,
+		&w->img_bits_per_pixel, &w->img_size_line, &w->img_endian);
+}
 
-void			q1(t_line *l);
-
-void			q2(t_line *l);
-
-void			q3(t_line *l);
-
-void			q4(t_line *l);
-
-void			l1(t_line *l);
-
-void			l2(t_line *l);
-
-void			l3(t_line *l);
-
-void			l4(t_line *l);
-
-#endif
+void	destroy_image(t_window *w)
+{
+	mlx_destroy_image(w->mlx, w->img_screen);
+	free(w->img_pixels);
+}
