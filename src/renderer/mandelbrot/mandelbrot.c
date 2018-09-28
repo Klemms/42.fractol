@@ -6,7 +6,7 @@
 /*   By: cababou <cababou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/28 02:58:57 by cababou           #+#    #+#             */
-/*   Updated: 2018/09/28 07:11:31 by cababou          ###   ########.fr       */
+/*   Updated: 2018/09/28 07:29:15 by cababou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ void		mandelbrot_init(t_window *w)
 	w->y1 = -1.2;
 	w->y2 = 1.2;
 	
-	w->x1 = -2.1 * 1;
-	w->x2 = 0.6 * 1;
-	w->y1 = -1.2 + 1;
-	w->y2 = 1.2 + 1;
-	w->zoom_x = (w->width / (w->x2 - w->x1)) * 2;
-	w->zoom_y = (w->height / (w->y2 - w->y1)) * 2;
+	w->x1 = -2.1;
+	w->x2 = 0.6;
+	w->y1 = -1.2;
+	w->y2 = 1.2;
+	w->zoom_x = (w->width / (w->x2 - w->x1));
+	w->zoom_y = (w->height / (w->y2 - w->y1));
 	generate_colors(w, BASE_FAR, BASE_MID, BASE_NEAR);
 	mandelbrot_render(w);
 }

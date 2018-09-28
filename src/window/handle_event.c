@@ -6,7 +6,7 @@
 /*   By: cababou <cababou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/28 02:26:59 by cababou           #+#    #+#             */
-/*   Updated: 2018/09/28 07:18:33 by cababou          ###   ########.fr       */
+/*   Updated: 2018/09/28 08:10:36 by cababou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,53 +37,47 @@ int		loop_program(t_params *p)
 	return (1);
 }
 
-double test(int v1, int v2, int width, int x)
-{
-	double	range;
-	double	percent;
-
-	range = v2 - v1;
-	percent = ((double)x) / width;
-	return (range * percent);
-}
-
 void	distance_to_center(t_window *w, int x, int y)
 {
-	int dist_x;
-	int dist_y;
+	long double x_mult;
+	long double y_mult;
 
-	dist_x = x - w->width / 2;
-	dist_x = y - w->height / 2;
-
-
-
-
-
-	printf("%d ** %d\n", x - w->width / 2, y - w->height / 2);
+	x_mult = 1 + 0.5 * (((double)x - w->width / 2) / (w->width / 2));
+	y_mult = 1 + 0.5 * (((double)y - w->height / 2) / (w->height / 2));
+	printf("%Lf\n", (w->x2 - w->x1) * x_mult - (w->x2 - w->x1));
+	printf("%Lf ** %Lf ** %Lf ** %Lf\n", w->x1, w->x2, w->y1, w->y2);
+	fflush(stdout);
+	w->x1 += (w->x2 - w->x1) * x_mult - (w->x2 - w->x1);
+	w->x2 += (w->x2 - w->x1) * x_mult - (w->x2 - w->x1);
+	w->y1 += (w->y2 - w->y1) * y_mult - (w->y2 - w->y1);
+	w->y2 += (w->y2 - w->y1) * y_mult - (w->y2 - w->y1);
+	printf("%Lf ** %Lf ** %Lf ** %Lf\n", w->x1, w->x2, w->y1, w->y2);
+	fflush(stdout);
 }
 
 int		mouse_release(int button, int x, int y, t_window *w)
 {
-	distance_to_center(w, x, y);
+	//distance_to_center(w, x, y);
 	if (button == 1)
 	{
-		w->zoom_x *= 1.1;
-		w->zoom_y *= 1.1;
+		w->x1 = x - w->height;
+		w->x2 = x + w->height;
+
+		w->y1 = y - w->height;
+		w->y2 = y + w->height;
+
+		/*w->zoom_x = (w->width / (w->x2 - w->x1));
+		w->zoom_y = (w->height / (w->y2 - w->y1));*/
 		if (w->fractal_type == FRACTAL_MANDELBROT)
 			mandelbrot_render(w);
 	}
 	if (button == 2)
 	{
-		w->zoom_x *= 0.9;
-		w->zoom_y *= 0.9;
+		/*w->zoom_x *= 0.9;
+		w->zoom_y *= 0.9;*/
 		if (w->fractal_type == FRACTAL_MANDELBROT)
 			mandelbrot_render(w);
 	}
-	printf("%f\n", test(w->x2, w->x1, w->width, x));
-	w->x1 = w->x1 + test(w->x2, w->x1, w->width, x);
-	w->x2 = w->x2 + test(w->x2, w->x1, w->width, x);
-	w->y1 = w->y1 + test(w->y2, w->y1, w->height, y);
-	w->y2 = w->y2 + test(w->y2, w->y1, w->height, y);
 	return (1);
 }
 
