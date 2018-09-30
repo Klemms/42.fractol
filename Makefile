@@ -6,7 +6,7 @@
 #    By: cababou <cababou@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/06 22:06:43 by cababou           #+#    #+#              #
-#    Updated: 2018/09/28 06:50:14 by cababou          ###   ########.fr        #
+#    Updated: 2018/09/30 04:52:13 by cababou          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRC =	fractol.c \
 		windows.c \
 		colors.c \
 		image.c \
+		zoom.c \
 		window/handle_event.c \
 		renderer/mandelbrot/mandelbrot.c
 

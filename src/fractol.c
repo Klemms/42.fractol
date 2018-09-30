@@ -6,7 +6,7 @@
 /*   By: cababou <cababou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/28 01:27:54 by cababou           #+#    #+#             */
-/*   Updated: 2018/09/28 06:48:29 by cababou          ###   ########.fr       */
+/*   Updated: 2018/09/30 04:50:38 by cababou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,18 @@ void	start(t_params *p)
 	}
 }
 
+void	render_iterations(t_window *w)
+{
+	char	*iter;
+	char	*str;
+
+	iter = ft_itoa(w->max_iteration);
+	str = ft_strjoin("Iterations : ", iter, 0);
+	mlx_string_put(w->mlx, w->window, 15, 15, BLACK_COLOR, iter);
+	free(iter);
+	free(str);
+}
+
 void	register_events(t_params *p)
 {
 	t_list		*el;
@@ -49,6 +61,8 @@ void	register_events(t_params *p)
 			key_press, window);
 		mlx_hook(window->window, ButtonRelease, ButtonReleaseMask,
 			mouse_release, window);
+		mlx_hook(window->window, ButtonPress, ButtonPressMask,
+			mouse_press, window);
 		el = el->next;
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cababou <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: cababou <cababou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 19:08:52 by cababou           #+#    #+#             */
-/*   Updated: 2017/12/13 19:40:29 by cababou          ###   ########.fr       */
+/*   Updated: 2018/09/30 00:03:30 by cababou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,5 @@ char			*ft_itoa(int n)
 		n = n / 10;
 		i++;
 	}
-	return (ft_strrev(str));
+	return (ft_strrev(str, 1));
 }

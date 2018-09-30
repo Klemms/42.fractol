@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cababou <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: cababou <cababou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 19:20:19 by cababou           #+#    #+#             */
-/*   Updated: 2017/12/13 19:44:22 by cababou          ###   ########.fr       */
+/*   Updated: 2018/09/30 00:04:23 by cababou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrev(char const *s1)
+char	*ft_strrev(char *s1, int free_it)
 {
 	size_t	i;
 	char	*nstring;
@@ -27,5 +27,7 @@ char	*ft_strrev(char const *s1)
 		i++;
 	}
 	nstring[i] = '\0';
+	if (free_it == 1)
+		free(s1);
 	return (nstring);
 }

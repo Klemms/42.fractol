@@ -6,7 +6,7 @@
 /*   By: cababou <cababou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 17:21:05 by cababou           #+#    #+#             */
-/*   Updated: 2018/09/04 03:15:03 by cababou          ###   ########.fr       */
+/*   Updated: 2018/09/30 00:04:30 by cababou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ char				*ft_strsub(char const *s, size_t t, size_t l, size_t f);
 
 char				*ft_strjoin(char const *s1, char const *s2, size_t freelv);
 
-char				*ft_strrev(char const *s1);
+char				*ft_strrev(char *s1, int free_it);
 
 char				*ft_strtrim(char const *s);
 

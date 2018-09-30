@@ -6,7 +6,7 @@
 /*   By: cababou <cababou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/28 06:12:44 by cababou           #+#    #+#             */
-/*   Updated: 2018/09/28 06:21:59 by cababou          ###   ########.fr       */
+/*   Updated: 2018/09/30 00:08:27 by cababou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,4 @@ void	make_screen(t_window *w)
 void	destroy_image(t_window *w)
 {
 	mlx_destroy_image(w->mlx, w->img_screen);
-	free(w->img_pixels);
 }

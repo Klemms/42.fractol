@@ -6,7 +6,7 @@
 /*   By: cababou <cababou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/28 02:04:42 by cababou           #+#    #+#             */
-/*   Updated: 2018/09/28 06:37:59 by cababou          ###   ########.fr       */
+/*   Updated: 2018/09/30 02:45:59 by cababou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_window	*make_window(t_params *p, char *title, int fractal_type)
 	window->fractal_type = fractal_type;
 	window->is_closed = 0;
 	window->need_check = &(p->need_check);
-	window->max_iteration = 65;
+	window->max_iteration = 75;
 	window->colors = NULL;
 	return (window);
 }
