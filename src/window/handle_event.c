@@ -6,12 +6,11 @@
 /*   By: cababou <cababou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/28 02:26:59 by cababou           #+#    #+#             */
-/*   Updated: 2018/09/30 05:12:40 by cababou          ###   ########.fr       */
+/*   Updated: 2018/09/30 07:29:14 by cababou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
-#include <stdio.h>
 
 int		loop_program(t_params *p)
 {
@@ -70,18 +69,10 @@ int		key_press(int key, t_window *w)
 {
 	if (key == 53)
 		exit_program(0);
-	if (key == 69 || key == 116)
-	{
-		w->max_iteration += key == 69 ? 10 : 1;
-		generate_colors(w);
-		re_render(w);
-	}
-	if (key == 78 || key == 121)
-	{
-		w->max_iteration -= key == 78 ? 10 : 1;
-		generate_colors(w);
-		re_render(w);
-	}
+	if (key == 123 || key == 124 || key == 125 || key == 126)
+		handle_arrows(w, key);
+	if (key == 78 || key == 121 || key == 69 || key == 116)
+		handle_iterations(key, w);
 	if (key == 8)
 	{
 		generate_colors(w);
@@ -91,8 +82,16 @@ int		key_press(int key, t_window *w)
 	{
 		w->max_iteration = 75;
 		generate_colors(w);
-		re_render(w);
+		if (w->fractal_type == FRACTAL_MANDELBROT)
+			mandelbrot_init(w);
+		if (w->fractal_type == FRACTAL_JULIA)
+			julia_init(w);
+		if (w->fractal_type == FRACTAL_SHIP)
+			ship_init(w);
+		render_iterations(w);
 	}
+	if (key == 17)
+		w->mouse_enabled = !w->mouse_enabled;
 	return (1);
 }
 

@@ -6,12 +6,11 @@
 /*   By: cababou <cababou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 19:08:52 by cababou           #+#    #+#             */
-/*   Updated: 2018/09/30 00:03:30 by cababou          ###   ########.fr       */
+/*   Updated: 2018/09/30 05:34:15 by cababou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static size_t	charsize(int n)
 {

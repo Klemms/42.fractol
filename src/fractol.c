@@ -6,7 +6,7 @@
 /*   By: cababou <cababou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/28 01:27:54 by cababou           #+#    #+#             */
-/*   Updated: 2018/09/30 04:53:55 by cababou          ###   ########.fr       */
+/*   Updated: 2018/09/30 07:30:10 by cababou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ void	start(t_params *p)
 		window = (t_window *)el->content;
 		if (window->fractal_type == FRACTAL_MANDELBROT)
 			mandelbrot_init(window);
+		if (window->fractal_type == FRACTAL_JULIA)
+			julia_init(window);
+		if (window->fractal_type == FRACTAL_SHIP)
+			ship_init(window);
 		el = el->next;
 	}
 }
@@ -63,6 +67,8 @@ void	register_events(t_params *p)
 			mouse_release, window);
 		mlx_hook(window->window, ButtonPress, ButtonPressMask,
 			mouse_press, window);
+		mlx_hook(window->window, MotionNotify, PointerMotionMask,
+			mouse_motion, window);
 		el = el->next;
 	}
 }
@@ -83,6 +89,7 @@ int		main(int argc, char **argv)
 	mlx_loop_hook(p->mlx, loop_program, p);
 	register_events(p);
 	srand(time(NULL));
+	show_controls();
 	start(p);
 	mlx_loop(p->mlx);
 	return (0);

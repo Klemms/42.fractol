@@ -6,7 +6,7 @@
 #    By: cababou <cababou@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/06 22:06:43 by cababou           #+#    #+#              #
-#    Updated: 2018/09/30 04:52:13 by cababou          ###   ########.fr        #
+#    Updated: 2018/09/30 07:12:21 by cababou          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,12 @@ SRC =	fractol.c \
 		colors.c \
 		image.c \
 		zoom.c \
+		zoom_ship.c \
+		controls.c \
 		window/handle_event.c \
-		renderer/mandelbrot/mandelbrot.c
+		renderer/mandelbrot.c \
+		renderer/julia.c \
+		renderer/ship.c
 
 OBJ = $(SRC:.c=.o)
 

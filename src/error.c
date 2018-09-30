@@ -6,7 +6,7 @@
 /*   By: cababou <cababou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/28 01:29:43 by cababou           #+#    #+#             */
-/*   Updated: 2018/09/28 02:08:44 by cababou          ###   ########.fr       */
+/*   Updated: 2018/09/30 06:34:36 by cababou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,6 @@ void	show_arguments(void)
 	ft_putendl("");
 	ft_putendl("Available Fractals :");
 	ft_putendl(" - mandelbrot");
+	ft_putendl(" - julia");
+	ft_putendl(" - ship");
 }

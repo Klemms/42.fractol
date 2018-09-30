@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cababou <cababou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/28 02:58:57 by cababou           #+#    #+#             */
-/*   Updated: 2018/09/30 02:45:32 by cababou          ###   ########.fr       */
+/*   Updated: 2018/09/30 06:15:53 by cababou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mandelbrot.h"
-#include <stdio.h>
+#include "../fractol.h"
 
-void		mandelbrot_init(t_window *w)
+void		julia_init(t_window *w)
 {
-	w->x1 = -2.1;
-	w->x2 = 0.6;
-	w->y1 = -1.2;
-	w->y2 = 1.2;
+	w->x1 = -1.5;
+	w->x2 = 1.5;
+	w->y1 = -1.5;
+	w->y2 = 1.5;
 	w->zoom_x = (w->width / (w->x2 - w->x1));
 	w->zoom_y = (w->height / (w->y2 - w->y1));
 	generate_colors(w);
-	mandelbrot_render(w);
+	julia_render(w);
 	render_iterations(w);
 }
 
-t_fractal	*mandelbrot_init_render(t_window *w)
+t_fractal	*julia_init_render(t_window *w)
 {
 	t_fractal	*fractal;
 
@@ -41,7 +40,7 @@ t_fractal	*mandelbrot_init_render(t_window *w)
 	return (fractal);
 }
 
-void	mandelbrot_render(t_window *w)
+void	julia_render(t_window *w)
 {
 	long double	x;
 	long double	y;
@@ -54,16 +53,16 @@ void	mandelbrot_render(t_window *w)
 	mlx_put_image_to_window(w->mlx, w->window, w->img_screen, 0, 0);
 	y = 0;
 	k = 0;
-	fl = mandelbrot_init_render(w);
+	fl = julia_init_render(w);
 	while (y < w->height)
 	{
 		x = 0;
 		while (x < w->width)
 		{
-			fl->c_r = w->x1 + (x * (w->x2 - w->x1)) / w->width;
-			fl->c_i = w->y1 + (y * (w->y2 - w->y1)) / w->height;
-			fl->z_r = 0;
-			fl->z_i = 0;
+			fl->c_r = w->mouse_p1;
+			fl->c_i = w->mouse_p2;
+			fl->z_r = w->x1 + (x * (w->x2 - w->x1)) / w->width;
+			fl->z_i = w->y1 + (y * (w->y2 - w->y1)) / w->height;
 			fl->i = 0;
 			fl->tmp = fl->z_r;
 			fl->z_r = fl->z_r * fl->z_r - fl->z_i * fl->z_i + fl->c_r;
@@ -81,7 +80,6 @@ void	mandelbrot_render(t_window *w)
 		}
 		y++;
 	}
-	fflush(stdout);
 	mlx_put_image_to_window(w->mlx, w->window, w->img_screen, 0, 0);
 	destroy_image(w);
 	free(fl);

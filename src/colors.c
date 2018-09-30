@@ -6,12 +6,11 @@
 /*   By: cababou <cababou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/28 05:05:14 by cababou           #+#    #+#             */
-/*   Updated: 2018/09/30 02:41:13 by cababou          ###   ########.fr       */
+/*   Updated: 2018/09/30 05:34:17 by cababou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-#include <stdio.h>
 
 int		calc_gradient(int color1, int color2, double stage)
 {

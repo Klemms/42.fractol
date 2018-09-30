@@ -6,7 +6,7 @@
 /*   By: cababou <cababou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/28 02:04:42 by cababou           #+#    #+#             */
-/*   Updated: 2018/09/30 02:45:59 by cababou          ###   ########.fr       */
+/*   Updated: 2018/09/30 06:35:34 by cababou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,12 @@ int			str_to_fractal(char *string)
 {
 	if (ft_strequ(string, "mandelbrot"))
 		return (FRACTAL_MANDELBROT);
+	if (ft_strequ(string, "julia"))
+		return (FRACTAL_JULIA);
+	if (ft_strequ(string, "ship"))
+		return (FRACTAL_SHIP);
 	ft_putstr("No Fractal found with name '");
-	ft_putstr(string);
-	ft_putendl("'. Using mandelbrot");
+	exit_program(1);
 	return (FRACTAL_MANDELBROT);
 }
 
@@ -39,6 +42,9 @@ t_window	*make_window(t_params *p, char *title, int fractal_type)
 	window->need_check = &(p->need_check);
 	window->max_iteration = 75;
 	window->colors = NULL;
+	window->mouse_p1 = 0;
+	window->mouse_p2 = 0;
+	window->mouse_enabled = window->fractal_type == FRACTAL_JULIA ? 1 : 0;
 	return (window);
 }
 
