@@ -6,7 +6,7 @@
 /*   By: cababou <cababou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/28 01:24:17 by cababou           #+#    #+#             */
-/*   Updated: 2018/09/30 07:30:18 by cababou          ###   ########.fr       */
+/*   Updated: 2018/09/30 15:21:58 by cababou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct		s_fractal
 	long double		z_i;
 	long double		tmp;
 	long			i;
+	int				k;
 }					t_fractal;
 
 typedef struct		s_window
@@ -117,5 +118,6 @@ void				re_render(t_window *w);
 void				render_iterations(t_window *w);
 
 void				show_controls(void);
+void				reset_view(t_window *w);
 
 #endif

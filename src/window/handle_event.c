@@ -6,7 +6,7 @@
 /*   By: cababou <cababou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/28 02:26:59 by cababou           #+#    #+#             */
-/*   Updated: 2018/09/30 07:29:14 by cababou          ###   ########.fr       */
+/*   Updated: 2018/09/30 15:22:08 by cababou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,17 +79,7 @@ int		key_press(int key, t_window *w)
 		re_render(w);
 	}
 	if (key == 15)
-	{
-		w->max_iteration = 75;
-		generate_colors(w);
-		if (w->fractal_type == FRACTAL_MANDELBROT)
-			mandelbrot_init(w);
-		if (w->fractal_type == FRACTAL_JULIA)
-			julia_init(w);
-		if (w->fractal_type == FRACTAL_SHIP)
-			ship_init(w);
-		render_iterations(w);
-	}
+		reset_view(w);
 	if (key == 17)
 		w->mouse_enabled = !w->mouse_enabled;
 	return (1);

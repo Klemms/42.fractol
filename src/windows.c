@@ -6,7 +6,7 @@
 /*   By: cababou <cababou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/28 02:04:42 by cababou           #+#    #+#             */
-/*   Updated: 2018/09/30 06:35:34 by cababou          ###   ########.fr       */
+/*   Updated: 2018/09/30 15:07:41 by cababou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int			str_to_fractal(char *string)
 	if (ft_strequ(string, "ship"))
 		return (FRACTAL_SHIP);
 	ft_putstr("No Fractal found with name '");
+	ft_putstr(string);
+	ft_putendl("'");
 	exit_program(1);
 	return (FRACTAL_MANDELBROT);
 }

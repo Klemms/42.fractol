@@ -6,13 +6,13 @@
 #    By: cababou <cababou@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/06 22:06:43 by cababou           #+#    #+#              #
-#    Updated: 2018/09/30 07:33:15 by cababou          ###   ########.fr        #
+#    Updated: 2018/09/30 15:04:58 by cababou          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SHELL := /bin/bash
 
-NAME = fdf
+NAME = fractol
 
 SRC =	fractol.c \
 		error.c \

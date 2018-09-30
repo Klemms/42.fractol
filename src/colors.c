@@ -6,7 +6,7 @@
 /*   By: cababou <cababou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/28 05:05:14 by cababou           #+#    #+#             */
-/*   Updated: 2018/09/30 05:34:17 by cababou          ###   ########.fr       */
+/*   Updated: 2018/09/30 15:30:38 by cababou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,44 @@ int		calc_gradient(int color1, int color2, double stage)
 	return (color);
 }
 
+void	g_colors_3(t_window *w, int *last_color, int *i, int **colors)
+{
+	while ((*i) < w->max_iteration)
+	{
+		if ((*i) % 10 == 0)
+		{
+			(*last_color) = (*colors)[(*i)];
+			(*i)++;
+			continue ;
+		}
+		(*colors)[(*i)] = calc_gradient((*last_color),
+			((*i) + (10 - (*i) % 10)) >= w->max_iteration ?
+			(*colors)[w->max_iteration - 1] :
+			(*colors)[(*i) + (10 - (*i) % 10)], ((double)((*i) % 10)) / 10);
+		(*i)++;
+	}
+	(*colors)[w->max_iteration - 1] = 0;
+}
+
+void	g_colors_2(t_window *w, int *last_color, int *i, int **colors)
+{
+	while ((*i) < w->max_iteration)
+	{
+		if ((*i) % 10 == 0)
+		{
+			(*colors)[(*i)] = rgba_to_int(rand() * 255, rand() * 255,
+				rand() * 255, 0);
+			(*last_color) = (*colors)[(*i)];
+		}
+		(*i)++;
+	}
+	(*colors)[(*i) - 1] = rgba_to_int(rand() * 255, rand() * 255,
+		rand() * 255, 0);
+	(*i) = 1;
+	(*last_color) = (*colors)[0];
+	g_colors_3(w, last_color, i, colors);
+}
+
 void	generate_colors(t_window *w)
 {
 	int *colors;
@@ -44,29 +82,6 @@ void	generate_colors(t_window *w)
 		handle_error(ERR_MEMORY, 1);
 	ft_bzero(colors, sizeof(int) * w->max_iteration);
 	i = 0;
-	while (i < w->max_iteration)
-	{
-		if (i % 10 == 0)
-		{
-			colors[i] = rgba_to_int(rand() * 255, rand() * 255, rand() * 255, 0);
-			last_color = colors[i];
-		}
-		i++;
-	}
-	colors[i - 1] = rgba_to_int(rand() * 255, rand() * 255, rand() * 255, 0);
-	i = 1;
-	last_color = colors[0];
-	while (i < w->max_iteration)
-	{
-		if (i % 10 == 0)
-		{
-			last_color = colors[i];
-			i++;
-			continue ;
-		}
-		colors[i] = calc_gradient(last_color, (i + (10 - i % 10)) >= w->max_iteration ? colors[w->max_iteration - 1] : colors[i + (10 - i % 10)], ((double)(i % 10)) / 10);
-		i++;
-	}
-	colors[w->max_iteration - 1] = 0;
+	g_colors_2(w, &last_color, &i, &colors);
 	w->colors = colors;
 }

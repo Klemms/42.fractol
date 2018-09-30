@@ -6,7 +6,7 @@
 /*   By: cababou <cababou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/28 07:00:39 by cababou           #+#    #+#             */
-/*   Updated: 2018/09/30 07:29:49 by cababou          ###   ########.fr       */
+/*   Updated: 2018/09/30 15:21:36 by cababou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,17 @@ void	show_controls(void)
 	ft_putendl("  + and - (Numpad) >> Add 10 or remove 10 iterations (Also randomizes colors)");
 	ft_putendl("  PageUp and PageDown >> Add 1 or remove 1 iteration (Also randomizes colors)");
 	ft_putendl("  T >> Toggle mouse usage in Julia");
+}
+
+void	reset_view(t_window *w)
+{
+	w->max_iteration = 75;
+	generate_colors(w);
+	if (w->fractal_type == FRACTAL_MANDELBROT)
+		mandelbrot_init(w);
+	if (w->fractal_type == FRACTAL_JULIA)
+		julia_init(w);
+	if (w->fractal_type == FRACTAL_SHIP)
+		ship_init(w);
+	render_iterations(w);
 }
