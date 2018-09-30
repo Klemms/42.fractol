@@ -6,7 +6,7 @@
 /*   By: cababou <cababou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/28 02:58:57 by cababou           #+#    #+#             */
-/*   Updated: 2018/09/30 07:07:59 by cababou          ###   ########.fr       */
+/*   Updated: 2018/09/30 07:34:17 by cababou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void		ship_init(t_window *w)
 	render_iterations(w);
 }
 
-t_fractal	*ship_init_render(t_window *w)
+t_fractal	*ship_init_render()
 {
 	t_fractal	*fractal;
 
@@ -44,8 +44,6 @@ void	ship_render(t_window *w)
 {
 	long double	x;
 	long double	y;
-	long double size;
-	long double smoothed;
 	int			k;
 	t_fractal	*fl;
 
@@ -53,7 +51,7 @@ void	ship_render(t_window *w)
 	mlx_put_image_to_window(w->mlx, w->window, w->img_screen, 0, 0);
 	y = w->height - 1;
 	k = 0;
-	fl = ship_init_render(w);
+	fl = ship_init_render();
 	while (y >= 0)
 	{
 		x = 0;

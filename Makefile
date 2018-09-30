@@ -6,7 +6,7 @@
 #    By: cababou <cababou@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/06 22:06:43 by cababou           #+#    #+#              #
-#    Updated: 2018/09/30 07:12:21 by cababou          ###   ########.fr        #
+#    Updated: 2018/09/30 07:33:15 by cababou          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,17 +38,17 @@ ONLYDIR =	$(foreach dir, $(OBJP), $(shell echo $(dir) | rev | perl -pe 's/.*?\//
 
 LIB = ./libft
 
-FLAG = -lmlx -framework OpenGL -framework AppKit
+FLAG = -Wall -Wextra -Werror -lmlx -framework OpenGL -framework AppKit
 
 all : $(NAME)
 
 $(NAME) : $(OBJP)
 			make -C $(LIB)
-			gcc -g $(FLAG) $(OBJP) ./libft/libft.a -o $(NAME)
+			gcc $(FLAG) $(OBJP) ./libft/libft.a -o $(NAME)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 			@mkdir -p $(ONLYDIR)
-			gcc -g -c $< -o $@
+			gcc -Wall -Wextra -Werror -c $< -o $@
 
 clean :
 			rm -rf $(OBJDIR)

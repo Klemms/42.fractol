@@ -6,7 +6,7 @@
 /*   By: cababou <cababou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/28 02:58:57 by cababou           #+#    #+#             */
-/*   Updated: 2018/09/30 06:33:04 by cababou          ###   ########.fr       */
+/*   Updated: 2018/09/30 07:34:10 by cababou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void		mandelbrot_init(t_window *w)
 	render_iterations(w);
 }
 
-t_fractal	*mandelbrot_init_render(t_window *w)
+t_fractal	*mandelbrot_init_render()
 {
 	t_fractal	*fractal;
 
@@ -44,8 +44,6 @@ void	mandelbrot_render(t_window *w)
 {
 	long double	x;
 	long double	y;
-	long double size;
-	long double smoothed;
 	int			k;
 	t_fractal	*fl;
 
@@ -53,7 +51,7 @@ void	mandelbrot_render(t_window *w)
 	mlx_put_image_to_window(w->mlx, w->window, w->img_screen, 0, 0);
 	y = 0;
 	k = 0;
-	fl = mandelbrot_init_render(w);
+	fl = mandelbrot_init_render();
 	while (y < w->height)
 	{
 		x = 0;
