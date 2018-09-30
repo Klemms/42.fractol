@@ -6,7 +6,7 @@
 /*   By: cababou <cababou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/28 01:24:17 by cababou           #+#    #+#             */
-/*   Updated: 2018/09/30 04:50:46 by cababou          ###   ########.fr       */
+/*   Updated: 2018/09/30 05:06:28 by cababou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,10 @@ int					key_press(int key, t_window *w);
 int					mouse_release(int button, int x, int y, t_window *w);
 int					mouse_press(int button, int x, int y, t_window *w);
 
+void				zoom_mouse(t_window *w, double x, double y);
+void				unzoom_mouse(t_window *w, double x, double y);
+void				zoom_center(t_window *w, int x, int y);
+
 void				make_screen(t_window *w);
 void				destroy_image(t_window *w);
 
@@ -99,6 +103,7 @@ void				generate_colors(t_window *w);
 void				mandelbrot_init(t_window *w);
 void				mandelbrot_render(t_window *w);
 
+void				re_render(t_window *w);
 void				render_iterations(t_window *w);
 
 #endif

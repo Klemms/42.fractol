@@ -6,7 +6,7 @@
 /*   By: cababou <cababou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/28 01:27:54 by cababou           #+#    #+#             */
-/*   Updated: 2018/09/30 04:50:38 by cababou          ###   ########.fr       */
+/*   Updated: 2018/09/30 04:53:55 by cababou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	render_iterations(t_window *w)
 
 	iter = ft_itoa(w->max_iteration);
 	str = ft_strjoin("Iterations : ", iter, 0);
-	mlx_string_put(w->mlx, w->window, 15, 15, BLACK_COLOR, iter);
+	mlx_string_put(w->mlx, w->window, 15, 15, BLACK_COLOR, str);
 	free(iter);
 	free(str);
 }
